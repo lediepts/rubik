@@ -28,7 +28,7 @@
       const name = document.querySelector('#name').value
       const password = document.querySelector('#password').value
       if (!name || !password) return
-      axios.post('https://rubik-game-api.vercel.app/api/user', {
+      axios.post('/api/user', {
         name, password
       }, {
         headers: {
