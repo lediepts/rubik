@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name">
+    </div>
+    <div>
+      <label for="passwod">Password</label>
+      <input type="password" id="password">
+    </div>
+    <div>
+      <button id="register-btn">Register</button>
+    </div>
+  </div>
+  <script>
+    const registerBtn = document.getElementById('register-btn')
+    registerBtn.onclick = () => {
+      const name = document.querySelector('#name').value
+      const password = document.querySelector('#password').value
+      if (!name || !password) return
+      axios.post('https://rubik-game-api.vercel.app/api/user', {
+        name, password
+      }, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  </script>
+</body>
+
+</html>
